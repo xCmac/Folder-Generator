@@ -1,0 +1,24 @@
+{
+  "Folders": [
+    "/DCI Inspection",
+    "/Drawings",
+    "/Pictures",
+    "/Pictures/DCI",
+    "/Pictures/Incoming",
+    "/Pictures/In Process",
+    "/Pictures/Workscope",
+    "/Pictures/Final assembly",
+    "/Pictures/Shipping",
+    "/Final Job Book",
+    "/Requisitions",
+    "/Quotes",
+    "/Routers",
+    "/Shipping Documents",
+    "/Workscope",
+    "/NDT Reports",
+    "/Balance Reports",
+    "/Emails"
+  ],
+  "JobDocumentsDirectory": "",
+  "CreationDirectory": ""
+}
