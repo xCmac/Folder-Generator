@@ -10,6 +10,7 @@ namespace TriliumFolderGenerator
     {
         string jobName;
         ConfigurationModel configuration;
+        string jobType = @"DPS-";
 
         public Form1()
         {
@@ -50,7 +51,11 @@ namespace TriliumFolderGenerator
 
         private void createFolders()
         {
-            if (Directory.Exists(getOutputDirectory())) return;
+            if (Directory.Exists(getOutputDirectory()))
+            {
+                MessageBox.Show("Directory already exists", "Directory Exists");
+                return;
+            }
 
             DirectoryInfo di = Directory.CreateDirectory(getOutputDirectory());
 
@@ -92,15 +97,25 @@ namespace TriliumFolderGenerator
 
         private void textbox_job_TextChanged(object sender, EventArgs e)
         {
-            const string prefix = @"DPS-";
-            if (!textbox_job.Text.StartsWith(prefix))
+
+            if (!textbox_job.Text.StartsWith(jobType))
             {
-                textbox_job.Text = prefix;
+                textbox_job.Text = jobType;
                 textbox_job.SelectionStart = textbox_job.Text.Length;
             }
 
             jobName = textbox_job.Text;
             button_generate.Enabled = !string.IsNullOrWhiteSpace(textbox_job.Text) && textbox_job.Text.Length > 4;
+        }
+
+        private void job_type_radio_changed(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb.Checked)
+            {
+                jobType = rb.Text;
+                textbox_job.Text = rb.Text;
+            }
         }
 
         private void textbox_job_KeyPress(object sender, KeyPressEventArgs e)

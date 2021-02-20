@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.textbox_job = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button_generate = new System.Windows.Forms.Button();
             this.checkbox_openAfter = new System.Windows.Forms.CheckBox();
             this.foldersListBox = new System.Windows.Forms.ListBox();
@@ -45,45 +44,31 @@
             this.lbl_creationDirectory = new System.Windows.Forms.Label();
             this.textbox_documents_directory = new System.Windows.Forms.TextBox();
             this.lbl_documentsDirectory = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textbox_job
             // 
-            this.textbox_job.Location = new System.Drawing.Point(3, 3);
+            this.textbox_job.Location = new System.Drawing.Point(6, 19);
             this.textbox_job.Name = "textbox_job";
-            this.textbox_job.Size = new System.Drawing.Size(212, 20);
+            this.textbox_job.Size = new System.Drawing.Size(218, 20);
             this.textbox_job.TabIndex = 0;
             this.textbox_job.Text = "DPS-";
             this.textbox_job.TextChanged += new System.EventHandler(this.textbox_job_TextChanged);
             this.textbox_job.Enter += new System.EventHandler(this.textbox_job_Enter);
             this.textbox_job.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_job_KeyPress);
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.textbox_job, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button_generate, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.checkbox_openAfter, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 19);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(218, 289);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
             // button_generate
             // 
             this.button_generate.Enabled = false;
-            this.button_generate.Location = new System.Drawing.Point(3, 125);
+            this.button_generate.Location = new System.Drawing.Point(6, 211);
             this.button_generate.Name = "button_generate";
-            this.button_generate.Size = new System.Drawing.Size(212, 97);
+            this.button_generate.Size = new System.Drawing.Size(218, 97);
             this.button_generate.TabIndex = 2;
             this.button_generate.Text = "Generate";
             this.button_generate.UseVisualStyleBackColor = true;
@@ -92,7 +77,7 @@
             // checkbox_openAfter
             // 
             this.checkbox_openAfter.AutoSize = true;
-            this.checkbox_openAfter.Location = new System.Drawing.Point(3, 247);
+            this.checkbox_openAfter.Location = new System.Drawing.Point(6, 188);
             this.checkbox_openAfter.Name = "checkbox_openAfter";
             this.checkbox_openAfter.Size = new System.Drawing.Size(77, 17);
             this.checkbox_openAfter.TabIndex = 3;
@@ -110,7 +95,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.checkbox_openAfter);
+            this.groupBox1.Controls.Add(this.textbox_job);
+            this.groupBox1.Controls.Add(this.button_generate);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(230, 314);
@@ -233,6 +221,42 @@
             this.lbl_documentsDirectory.TabIndex = 1;
             this.lbl_documentsDirectory.Text = "Documents Directory";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButton2);
+            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Location = new System.Drawing.Point(7, 46);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(217, 70);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Job Type";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(7, 20);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(50, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "DPS-";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.job_type_radio_changed);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(7, 44);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(51, 17);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "DPO-";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.job_type_radio_changed);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,11 +268,12 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Folder Generator";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -256,7 +281,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textbox_job;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox checkbox_openAfter;
         private System.Windows.Forms.Button button_generate;
         private System.Windows.Forms.ListBox foldersListBox;
@@ -272,6 +296,9 @@
         private System.Windows.Forms.Button button_add_new_folder;
         private System.Windows.Forms.Label lbl_new_folder;
         private System.Windows.Forms.Button button_delete_folder;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 
