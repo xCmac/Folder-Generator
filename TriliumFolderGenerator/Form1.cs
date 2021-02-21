@@ -16,16 +16,30 @@ namespace TriliumFolderGenerator
         {
             InitializeComponent();
             loadConfiguration();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         private void loadConfiguration()
         {
             configuration = JsonConvert.DeserializeObject<ConfigurationModel>(File.ReadAllText(@"config.json"));
-            foreach (string folder in configuration.Folders)
+            foldersListBox.Items.Clear();
+
+            if(jobType == "DPS-")
             {
-                foldersListBox.Items.Add(folder);
+                foreach (string folder in configuration.FoldersDPS)
+                {
+                    foldersListBox.Items.Add(folder);
+                }
             }
+
+            if(jobType == "DPO-")
+            {
+                foreach (string folder in configuration.FoldersDPO)
+                {
+                    foldersListBox.Items.Add(folder);
+                }
+            }
+
 
             textbox_documents_directory.Text = configuration.JobDocumentsDirectory;
             textbox_creation_directory.Text = configuration.CreationDirectory;
@@ -59,9 +73,20 @@ namespace TriliumFolderGenerator
 
             DirectoryInfo di = Directory.CreateDirectory(getOutputDirectory());
 
-            foreach (string folder in configuration.Folders)
+            if(jobType == "DPS-")
             {
-                Directory.CreateDirectory($"{getOutputDirectory()}\\{folder}");
+                foreach (string folder in configuration.FoldersDPS)
+                {
+                    Directory.CreateDirectory($"{getOutputDirectory()}\\{folder}");
+                }
+            }
+
+            if (jobType == "DPO-")
+            {
+                foreach (string folder in configuration.FoldersDPO)
+                {
+                    Directory.CreateDirectory($"{getOutputDirectory()}\\{folder}");
+                }
             }
         }
 
@@ -115,6 +140,7 @@ namespace TriliumFolderGenerator
             {
                 jobType = rb.Text;
                 textbox_job.Text = rb.Text;
+                loadConfiguration();
             }
         }
 
@@ -150,7 +176,17 @@ namespace TriliumFolderGenerator
         {
             string selectedItem = foldersListBox.SelectedItem.ToString();
             foldersListBox.Items.Remove(selectedItem);
-            configuration.Folders.Remove(selectedItem);
+
+            if(jobType == "DPS-")
+            {
+                configuration.FoldersDPS.Remove(selectedItem);
+            }
+
+            if (jobType == "DPO-")
+            {
+                configuration.FoldersDPO.Remove(selectedItem);
+            }
+
             updateConfigurationFile();
         }
 
@@ -181,7 +217,16 @@ namespace TriliumFolderGenerator
         private void button_add_new_folder_Click(object sender, EventArgs e)
         {
             string newFolder = textbox_new_folder_name.Text.Trim().TrimEnd('/');
-            configuration.Folders.Add(newFolder);
+
+            if (jobType == "DPS-")
+            {
+                configuration.FoldersDPS.Add(newFolder);
+            }
+            if (jobType == "DPO-")
+            {
+                configuration.FoldersDPO.Add(newFolder);
+            }
+
             updateConfigurationFile();
             textbox_new_folder_name.Clear();
         }

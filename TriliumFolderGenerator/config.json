@@ -1,5 +1,5 @@
 {
-  "Folders": [
+  "FoldersDPS": [
     "/DCI Inspection",
     "/Drawings",
     "/Pictures",
@@ -18,6 +18,11 @@
     "/NDT Reports",
     "/Balance Reports",
     "/Emails"
+  ],
+  "FoldersDPO": [
+    "/Test",
+    "/Test2",
+    "/Test3"
   ],
   "JobDocumentsDirectory": "",
   "CreationDirectory": ""
